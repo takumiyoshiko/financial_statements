@@ -20,7 +20,7 @@ def request_sever(url, params):
     url = "https://disclosure.edinet-fsa.go.jp/api/v1/documents.json"
     print(params)
     try:
-        # time.sleep(0.3)
+        time.sleep(0.3)
         res = requests.get(url, params=params, verify=False)
         res_text = json.loads(res.text)
         results = res_text["results"]
@@ -44,6 +44,7 @@ def search_docid(company, AD, month):
         if kessan:
             break
         if date != end_day:
+            datestr = tdatetime.strftime('%Y-%m-%d')
             params = {"date":date, "type": 2 }
             results = request_sever(url, params)
             for result in results:
