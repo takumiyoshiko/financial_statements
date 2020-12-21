@@ -20,7 +20,7 @@ def request_sever(params):
     url = "https://disclosure.edinet-fsa.go.jp/api/v1/documents.json"
     print(params)
     try:
-        time.sleep(2)
+        time.sleep(15)
         res = requests.get(url, params=params, verify=True, timeout=10)
         res_text = json.loads(res.text)
         results = res_text["results"]
