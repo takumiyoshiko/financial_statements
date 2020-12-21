@@ -1,0 +1,50 @@
+body {
+  background: #ffffff;
+}
+
+p {
+  font-size: 7mm;
+  color: #000000;
+}
+
+form {
+  width: 700px;
+  margin: 0 auto;
+}
+
+#div_pref {
+  font-size: 5mm;
+  color: #000000;
+}
+
+#div_region1 {
+  margin-left: 5mm;
+}
+
+#div_region2 {
+  margin-left: 5mm;
+}
+
+#div_region3 {
+  margin-left: 5mm;
+}
+
+#div_region4 {
+  margin-left: 5mm;
+}
+
+#div_region5 {
+  margin-left: 5mm;
+}
+
+#div_region6 {
+  margin-left: 5mm;
+}
+
+#div_region7 {
+  margin-left: 5mm;
+}
+
+#div_region8 {
+  margin-left: 5mm;
+}
