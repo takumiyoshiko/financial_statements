@@ -41,6 +41,8 @@ def search_docid(company, AD, month):
     end_day = datetime.date(AD, month,1)
     date = start_day
     for i in range(1,32):
+        if kessan:
+            break
         if date != end_day:
             datestr =  date.strftime('%Y/%m/%d')
             params = {"date":datestr, "type": 2 }
@@ -49,7 +51,7 @@ def search_docid(company, AD, month):
                 if result['docDescription'] is not None:
                     if '有価証券報告書' in result['docDescription']:
                         if re.search(company, result['filerName']):  
-                        # print(result['docID'], result['docDescription'],result['filerName'])
+                            print(result['docID'], result['docDescription'],result['filerName'])
                             kessan.append(result)
             date = date + datetime.timedelta(days=1)
         else:
