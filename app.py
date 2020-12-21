@@ -16,12 +16,12 @@ import shutil
 import time
 
 
-def request_sever(url, params):
+def request_sever(params):
     url = "https://disclosure.edinet-fsa.go.jp/api/v1/documents.json"
     print(params)
     try:
         time.sleep(2)
-        res = requests.get(url, params=params, verify=False, timeout=10)
+        res = requests.get(url, params=params, verify=True, timeout=10)
         res_text = json.loads(res.text)
         results = res_text["results"]
     except:
@@ -33,7 +33,6 @@ def request_sever(url, params):
 
 def search_docid(company, AD, month):
     kessan = []
-    url = 'http://54.248.126.81:3000/reports/article'
     AD = int(AD)
     month = int(month)
     start_day = datetime.date(AD, month,1)
@@ -46,7 +45,7 @@ def search_docid(company, AD, month):
         if date != end_day:
             datestr = date.strftime('%Y-%m-%d')
             params = {"date":datestr, "type": 2 }
-            results = request_sever(url, params)
+            results = request_sever(params)
             for result in results:
                 if result['docDescription'] is not None:
                     if '有価証券報告書' in result['docDescription']:
