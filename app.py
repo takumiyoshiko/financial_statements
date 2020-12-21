@@ -44,7 +44,7 @@ def search_docid(company, AD, month):
         if kessan:
             break
         if date != end_day:
-            datestr = tdatetime.strftime('%Y-%m-%d')
+            datestr = date.strftime('%Y-%m-%d')
             params = {"date":date, "type": 2 }
             results = request_sever(url, params)
             for result in results:
