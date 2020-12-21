@@ -36,7 +36,7 @@ def search_docid(company, AD, month):
     url = 'http://54.248.126.81:3000/reports/article'
     AD = int(AD)
     month = int(month)
-    start_day = datetime.date(AD, month,1)
+    start_day = datetime.date(AD, month,18)
     month = month + 1
     end_day = datetime.date(AD, month,1)
     date = start_day
