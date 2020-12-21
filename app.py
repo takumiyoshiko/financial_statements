@@ -17,7 +17,7 @@ import shutil
 
 def request_sever(url, params):
     url = "https://disclosure.edinet-fsa.go.jp/api/v1/documents.json"
-    # print(params)
+    print(params)
     try:
         res = requests.get(url, params=params, verify=False)
         res_text = json.loads(res.text)
@@ -135,6 +135,7 @@ def export():
         if not docid:
             return render_template('error.html')
         df = get_finacial_statements(docid)
+        print(df)
         resp = make_response(df.to_csv())
         resp.data = resp.data.decode('utf-8').encode('cp932',"ignore")
         resp.headers["Content-Disposition"] = "attachment; filename={}; filename*=UTF-8''{}".format(filename,filename)
