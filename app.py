@@ -45,7 +45,7 @@ def search_docid(company, AD, month):
             break
         if date != end_day:
             datestr = date.strftime('%Y-%m-%d')
-            params = {"date":date, "type": 2 }
+            params = {"date":datestr, "type": 2 }
             results = request_sever(url, params)
             for result in results:
                 if result['docDescription'] is not None:
