@@ -20,10 +20,9 @@ def request_sever(url, params):
     url = "https://disclosure.edinet-fsa.go.jp/api/v1/documents.json"
     print(params)
     try:
-        time.sleep(0.3)
+        # time.sleep(0.3)
         res = requests.get(url, params=params, verify=False)
         res_text = json.loads(res.text)
-        print(res_text)
         results = res_text["results"]
     except:
         print(traceback.format_exc())
@@ -37,7 +36,7 @@ def search_docid(company, AD, month):
     url = 'http://54.248.126.81:3000/reports/article'
     AD = int(AD)
     month = int(month)
-    start_day = datetime.date(AD, month,18)
+    start_day = datetime.date(AD, month,1)
     month = month + 1
     end_day = datetime.date(AD, month,1)
     date = start_day
@@ -108,11 +107,9 @@ def get_finacial_statements(docid):
     for tag_td in tag_tds:
       text = re.sub("\n", "", tag_td.text)
       if should_add(text):
-        print(text)
         row[-1] += text
       else:
         row.append(text)
-        print(row)
     if index == 0:
       df = pd.DataFrame(columns=row)
     else:
