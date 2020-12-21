@@ -23,6 +23,7 @@ def request_sever(url, params):
         time.sleep(0.3)
         res = requests.get(url, params=params, verify=False)
         res_text = json.loads(res.text)
+        print(res_text)
         results = res_text["results"]
     except:
         print(traceback.format_exc())
