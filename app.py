@@ -138,7 +138,7 @@ def export():
         resp = make_response(df.to_csv())
         resp.data = resp.data.decode('utf-8').encode('cp932',"ignore")
         resp.headers["Content-Disposition"] = "attachment; filename={}; filename*=UTF-8''{}".format(filename,filename)
-        resp.headers["Content-Type"] = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        resp.headers["Content-Type"] = "text/csv"
         return resp
 
 if __name__ == "__main__":
