@@ -1,4 +1,4 @@
-#!/Users/yoshikoshi/credo/venv/bin/python
+#!/Users/yoshikoshi/financial_statements/venv/bin/python
 
 import sys
 import getopt
