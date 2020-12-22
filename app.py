@@ -45,15 +45,15 @@ def search_docid(company, AD, month, day, doc_type):
         return  kessan[0]['docID']
     return None
 
-
-unit_list = ['円', '百万円', '％', '倍', '人', '千株', '株']
+unit_list = ['円', '百万円', '％', '倍', '人', '千株', '株', '名', '千円']
 
 
 def should_add(text):
   for unit in unit_list:
-    if re.match(f"（{unit}）", text):
+    if re.match(f"（{unit}）", text) or re.match(f"\({unit}\)", text):
       return True
   return False
+
 
 def get_finacial_statements(docid):
   url = 'https://disclosure.edinet-fsa.go.jp/api/v1/documents/' + docid
