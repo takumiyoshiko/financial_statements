@@ -30,14 +30,14 @@ def request_sever(params):
     
 
 
-def search_docid(company, AD, month, day):
+def search_docid(company, AD, month, day, doc_type):
     kessan = []
     date = datetime.date(int(AD), int(month),int(day))
     params = {"date":date, "type": 2 }
     results = request_sever(params)
     for result in results:
         if result['docDescription'] is not None:
-            if '有価証券報告書' in result['docDescription']:
+            if doc_type in result['docDescription']:
                 if re.search(company, result['filerName']):  
                     print(result['docID'], result['docDescription'],result['filerName'])
                     kessan.append(result)
@@ -119,7 +119,7 @@ def export():
         result = request.form
         filename = result['company'] + result['year'] + result['month'] + result['day'] + '.csv'
         filename = urllib.parse.quote(filename) 
-        docid = search_docid(result['company'], result['year'], result['month'], result['day'])
+        docid = search_docid(result['company'], result['year'], result['month'], result['day'], result['type'])
         if not docid:
             return render_template('error.html')
         df = get_finacial_statements(docid)
