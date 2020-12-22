@@ -24,7 +24,11 @@
 </script>
       <form action = "/retrieve_article" method = "POST" onSubmit="return FormCheck(fld,reqcolor,encolor)">
          <p>会社名 <input type = "text" name = "company" value = ""/></p>
-
+         <p>タイプ<select name="type"title="年を選択してください">
+          <option selected>選択して下さい</option>
+          <option value="有価証券報告書">有価証券報告書</option>
+          <option value="四半期">四半期報告書</option>
+        </select></p>
          <p>年<select name="year"title="年を選択してください">
           <option selected>選択して下さい</option>
           <option value="2020">2020年</option>
@@ -33,19 +37,54 @@
         </select></p>
          <p>月<select name="month" title="月を選んでください">
           <option selected>選択して下さい</option>
-          <option value="1">1月</option>
-          <option value="2">2月</option>
-          <option value="3">3月</option>
-          <option value="4">4月</option>
-          <option value="5">5月</option>
+          <option value="01">1月</option>
+          <option value="02">2月</option>
+          <option value="03">3月</option>
+          <option value="04">4月</option>
+          <option value="05">5月</option>
           <option value="06">6月</option>
           <option value="07">7月</option>
           <option value="08">8月</option>
-          <option value="9">9月</option>
+          <option value="09">9月</option>
           <option value="10">10月</option>
           <option value="11">11月</option>
           <option value="12">12月</option>
         </select></p>
+      </select></p>
+      <p>月<select name="day" title="月を選んでください">
+       <option selected>選択して下さい</option>
+       <option value="01">1日</option>
+       <option value="02">2日</option>
+       <option value="03">3日</option>
+       <option value="04">4日</option>
+       <option value="05">5日</option>
+       <option value="06">6日</option>
+       <option value="07">7日</option>
+       <option value="08">8日</option>
+       <option value="09">9日</option>
+       <option value="10">10日</option>
+       <option value="11">11日</option>
+       <option value="12">12日</option>
+       <option value="13">13日</option>
+       <option value="14">14日</option>
+       <option value="15">15日</option>
+       <option value="16">16日</option>
+       <option value="17">17日</option>
+       <option value="18">18日</option>
+       <option value="19">19日</option>
+       <option value="20">20日</option>
+       <option value="21">21日</option>
+       <option value="22">22日</option>
+       <option value="23">23日</option>
+       <option value="24">24日</option>
+       <option value="25">25日</option>
+       <option value="26">26日</option>
+       <option value="27">27日</option>
+       <option value="28">28日</option>
+       <option value="29">29日</option>
+       <option value="30">30日</option>
+       <option value="31">31日</option>
+     </select></p>
           <p><input class="submit-button" value="Downloads" type="submit">
             <input type="reset" value="リセット"></p>
       </form>

@@ -30,30 +30,17 @@ def request_sever(params):
     
 
 
-def search_docid(company, AD, month):
+def search_docid(company, AD, month, day):
     kessan = []
-    AD = int(AD)
-    month = int(month)
-    start_day = datetime.date(AD, month,1)
-    month = month + 1
-    end_day = datetime.date(AD, month,1)
-    date = start_day
-    for i in range(1,32):
-        if kessan:
-            break
-        if date != end_day:
-            datestr = date.strftime('%Y-%m-%d')
-            params = {"date":datestr, "type": 2 }
-            results = request_sever(params)
-            for result in results:
-                if result['docDescription'] is not None:
-                    if '有価証券報告書' in result['docDescription']:
-                        if re.search(company, result['filerName']):  
-                            print(result['docID'], result['docDescription'],result['filerName'])
-                            kessan.append(result)
-            date = date + datetime.timedelta(days=1)
-        else:
-            break
+    date = datetime.date(int(AD), int(month),int(day))
+    params = {"date":date, "type": 2 }
+    results = request_sever(params)
+    for result in results:
+        if result['docDescription'] is not None:
+            if '有価証券報告書' in result['docDescription']:
+                if re.search(company, result['filerName']):  
+                    print(result['docID'], result['docDescription'],result['filerName'])
+                    kessan.append(result)
     if kessan:
         return  kessan[0]['docID']
     return None
@@ -130,9 +117,9 @@ def index():
 def export():
    if request.method == "POST":
         result = request.form
-        filename = result['company'] + result['year'] + result['month'] + '.csv'
+        filename = result['company'] + result['year'] + result['month'] + result['day'] + '.csv'
         filename = urllib.parse.quote(filename) 
-        docid = search_docid(result['company'], result['year'], result['month'])
+        docid = search_docid(result['company'], result['year'], result['month'], result['day'])
         if not docid:
             return render_template('error.html')
         df = get_finacial_statements(docid)
